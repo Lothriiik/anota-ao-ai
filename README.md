@@ -53,3 +53,19 @@ GROUP BY cliente.login
 
 ORDER BY quantidade_locacoes DESC, cliente.nome
 ```
+```
+SELECT 
+	filme.nome,
+	COUNT(1) quantidade_locacoes
+FROM
+	filme
+INNER JOIN 
+	unidade,
+	locar
+WHERE
+	unidade.codigo = locar.codigo_unidadeFK AND
+	filme.codigo = unidade.codigo_filmeFK
+GROUP BY filme.codigo
+
+ORDER BY quantidade_locacoes DESC
+```
