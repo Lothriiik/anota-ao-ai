@@ -69,3 +69,25 @@ GROUP BY filme.codigo
 
 ORDER BY quantidade_locacoes DESC
 ```
+```
+SELECT 
+	cliente.nome
+FROM
+	cliente
+INNER JOIN 
+	unidade,
+	locar,
+	possuir_legenda,
+	idioma i_legenda,
+	possuir_audio,
+	idioma i_audio
+WHERE
+	unidade.codigo = locar.codigo_unidadeFK AND
+	possuir_legenda.codigo_idiomaFK = i_legenda.codigo AND
+	possuir_audio.codigo_idiomaFK = i_audio.codigo AND
+	possuir_legenda.codigo_unidadeFK = unidade.codigo AND
+	cliente.login = locar.login_clienteFK AND
+	possuir_audio.codigo_unidadeFK = possuir_legenda.codigo_unidadeFK AND
+	i_audio.nome = "Português" AND
+	i_legenda.nome= "Inglês"
+```
