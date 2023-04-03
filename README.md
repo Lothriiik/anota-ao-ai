@@ -91,3 +91,70 @@ WHERE
 	i_audio.nome = "Português" AND
 	i_legenda.nome= "Inglês"
 ```
+```
+SELECT 
+	filme.nome, 
+	cliente.nome
+FROM
+	filme LIKE "a%"
+INNER JOIN 
+	unidade,
+	locar,
+	cliente
+WHERE
+	unidade.codigo_filmeFK = filme.codigo AND
+	unidade.codigo = locar.codigo_unidadeFK AND
+	locar.login_clienteFK = cliente.login AND
+	cliente.nome LIKE "a%"
+```
+```
+SELECT 
+	filme.nome, 
+	c.nome
+FROM
+	filme
+INNER JOIN 
+	unidade,
+	locar,
+	(SELECT * FROM cliente WHERE nome LIKE "a%") c
+WHERE
+	unidade.codigo_filmeFK = filme.codigo AND
+	unidade.codigo = locar.codigo_unidadeFK AND
+	locar.login_clienteFK = c.login 
+	
+```
+```
+SELECT codigo
+
+FROM filme
+
+WHERE codigo NOT IN 
+(
+SELECT 
+DISTINCT
+	unidade.codigo_filmeFK
+	
+FROM
+	locar
+	
+INNER JOIN 
+	unidade
+	
+WHERE
+	unidade.codigo = locar.codigo_unidadeFK 
+)
+
+```
+
+
+	
+	
+	
+
+	
+	
+	
+
+
+
+
