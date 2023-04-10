@@ -145,8 +145,42 @@ WHERE
 )
 
 ```
+questão 1
+```
+SELECT 
+	cliente.nome,
+	COUNT(1) quantidade_locacoes
+FROM
+	cliente
+INNER JOIN 
+	locar
+WHERE
+	cliente.login = locar.login_clienteFK
+	
+GROUP BY cliente.login
 
+ORDER BY quantidade_locacoes DESC
+```
+questão 2
+```
+SELECT 
 
+cliente.nome
+	
+FROM
+	locar
+	
+INNER JOIN 
+	unidade,
+	filme,
+	cliente
+	
+WHERE
+	unidade.codigo = locar.codigo_unidadeFK and
+	filme.codigo = unidade.codigo_filmeFK and
+	filme.nome = 'Titanic' and
+	locar.login_clienteFK = cliente.login
+```
 	
 	
 	
