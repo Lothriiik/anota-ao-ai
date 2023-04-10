@@ -145,7 +145,7 @@ WHERE
 )
 
 ```
-questão 1
+Questão 1
 ```
 SELECT 
 	cliente.nome,
@@ -161,7 +161,7 @@ GROUP BY cliente.login
 
 ORDER BY quantidade_locacoes DESC
 ```
-questão 2
+Questão 2
 ```
 SELECT nome
 
@@ -187,6 +187,29 @@ WHERE
 	filme.nome = 'Titanic' and
 	locar.login_clienteFK = cliente.login
 )
+```
+Questão 4
+```
+SELECT 
+	cliente.nome
+FROM
+	cliente
+INNER JOIN
+	locar,
+	unidade,
+	possuir_legenda pl1,
+	idioma i1,
+	possuir_legenda pl2,
+	idioma i2
+WHERE
+	pl1.codigo_idiomaFK = i1.codigo AND
+	pl2.codigo_idiomaFK = i2.codigo AND
+	locar.codigo_unidadeFK = unidade.codigo and
+	cliente.login = locar.login_clienteFK AND
+	pl1.codigo_unidadeFK= unidade.codigo and
+	pl2.codigo_unidadeFK= unidade.codigo and
+	i1.nome = "Português" AND
+	i2.nome= "Inglês"
 ```
 	
 	
