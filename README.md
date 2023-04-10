@@ -171,7 +171,7 @@ WHERE login NOT IN
 (
 SELECT 
 
-cliente.nome
+cliente.login
 	
 FROM
 	locar
