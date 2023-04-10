@@ -163,6 +163,12 @@ ORDER BY quantidade_locacoes DESC
 ```
 questão 2
 ```
+SELECT nome
+
+FROM cliente
+
+WHERE login NOT IN 
+(
 SELECT 
 
 cliente.nome
@@ -180,6 +186,7 @@ WHERE
 	filme.codigo = unidade.codigo_filmeFK and
 	filme.nome = 'Titanic' and
 	locar.login_clienteFK = cliente.login
+)
 ```
 	
 	
